@@ -54,13 +54,15 @@ const verJoyasPorFiltros = async ({precio_min, precio_max, categoria, metal}) =>
     console.log('Filtros aplicados...')
 
     // Se verifica que todos los datos del filtro tengan valores permitidos
-    if(precio_min <= 0 || precio_max <= 0) {
+    if(parseInt(precio_min) <= 0 || parseInt(precio_max) <= 0) {
         console.log('Los precios no pueden tener valores negativos. Por favor corrija ese detalle...')
+        throw new Error('No pueden haber valores negativos en los precios...')
     }
 
     // Se verifica que el precio máximo, sea mayor que el precio mínimo.
-    if(precio_min >= precio_max) {
+    if(parseInt(precio_min) >= parseInt(precio_max)) {
         console.log('Los valores de los precios deben están en orden inverso. Corrija ese detalle...')
+        throw new Error('El mínimo es mayor o igual al máximo...')
     } else {
         if (precio_min) agregarFiltro('precio', '>=', precio_min)
         if (precio_max) agregarFiltro('precio', '<=', precio_max)
