@@ -35,9 +35,7 @@ const verJoyas = async ({ limits = defaultLimits, order_by = defaultOrder, page 
     const formattedQuery = format('SELECT * FROM inventario order by %s %s LIMIT %s OFFSET %s', campo, sentido, limits, offset);
 
     const { rows: inventario } = await pool.query(formattedQuery)
-
-    if (!inventario) throw {code: 500, message: 'No existen datos...'}
-
+    
     return inventario
 }
 
