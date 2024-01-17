@@ -1,0 +1,9 @@
+const defaultLimits = 3;
+
+const defaultPage = 1;
+
+const defaultOrder = "precio_ASC";
+
+
+
+export { defaultLimits, defaultOrder, defaultPage }
